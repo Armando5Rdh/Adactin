@@ -41,4 +41,8 @@ public class LoginSteps extends CommonSteps {
         compareText(loginObjects.getMissingUsernameTxt().getText(),message);
     }
 
+    public void verifyWrongCredentials(String message) {
+        compareText(loginObjects.getInvalidCredentialsTxt().getText(),message);
+    }
+
 }

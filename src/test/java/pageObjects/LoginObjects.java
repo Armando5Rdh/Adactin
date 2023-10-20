@@ -29,6 +29,9 @@ public class LoginObjects extends MenuObjects{
     @FindBy(id = "username_span")
     WebElement missingUsernameTxt;
 
+    @FindBy(className = "auth_error")
+    WebElement invalidCredentialsTxt;
+
     public WebElement getUsernameField() {
         return usernameField;
     }
@@ -47,6 +50,10 @@ public class LoginObjects extends MenuObjects{
 
     public WebElement getMissingPasswordTxt() {
         return missingUsernameTxt;
+    }
+
+    public WebElement getInvalidCredentialsTxt() {
+        return invalidCredentialsTxt;
     }
 
 

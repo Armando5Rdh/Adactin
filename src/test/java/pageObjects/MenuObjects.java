@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class MenuObjects {
 
     private WebDriver driver;
@@ -31,6 +33,9 @@ public class MenuObjects {
     @FindBy(xpath = "//td[@class='welcome_menu'][2]//a[4]")
     WebElement logoutPage;
 
+    @FindBy(tagName = "a")
+    List<WebElement> links;
+
 
     public WebElement getWelcomeMessage() {
         return welcomeMessage;
@@ -54,6 +59,10 @@ public class MenuObjects {
 
     public WebElement getLogoutPage() {
         return logoutPage;
+    }
+
+    public List<WebElement> getLinks() {
+        return links;
     }
 
 
