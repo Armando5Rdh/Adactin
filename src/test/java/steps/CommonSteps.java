@@ -5,23 +5,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-import pageObjects.LoginObjects;
-import pageObjects.MenuObjects;
+import pageObjects.Menu;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.List;
 
 public class CommonSteps {
 
     WebDriver driver;
-    MenuObjects menuObjects;
+    Menu menu;
     public CommonSteps(WebDriver driver) {
         this.driver = driver;
-        menuObjects = new MenuObjects(driver);
+        menu = new Menu(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -30,13 +27,13 @@ public class CommonSteps {
     }
 
     public void verifyWelcomeMessage(String message) {
-        String actualMessage = menuObjects.getCustomizedMessage().getAttribute("value");
+        String actualMessage = menu.getCustomizedMessage().getAttribute("value");
         compareText(actualMessage, message);
     }
 
     public void verifyLinksAreWorking() throws IOException {
         String url;
-        List<WebElement> links = menuObjects.getLinks();
+        List<WebElement> links = menu.getLinks();
         SoftAssert a = new SoftAssert();
 
         for (WebElement link : links) {

@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MenuObjects {
+public class Menu {
 
     private WebDriver driver;
 
-    public MenuObjects(WebDriver driver) {
+    public Menu(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
