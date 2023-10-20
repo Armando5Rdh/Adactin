@@ -10,16 +10,36 @@ import utils.BaseTest;
 
 public class LoginTest extends BaseTest {
 
+    String validUsername = "ArmandoRdh";
+    String validPassword = "Test123!";
+
+    String missingPassword = "Enter Password";
+
+    String missingUsername = "Enter Username";
     LoginSteps loginSteps;
 
     @Test
     public void testLoginValidAccount() throws InterruptedException {
         loginSteps = new LoginSteps(driver);
-        String username = "ArmandoRdh";
-        String password = "Test123!";
-        String message = "Hello " + username + "!";
-        loginSteps.login(username, password);
+        String message = "Hello " + validUsername + "!";
+        loginSteps.login(validUsername, validPassword);
         Thread.sleep(1500);
         loginSteps.verifyWelcomeMessage(message);
+    }
+
+    @Test
+    public void testLoginOnlyUsername() {
+        loginSteps = new LoginSteps(driver);
+        loginSteps.enterUsername(validUsername);
+        loginSteps.clickLoginButton();
+        loginSteps.verifyEnterPasswordTxt(missingPassword);
+    }
+
+    @Test
+    public void testLoginOnlyPassword() {
+        loginSteps = new LoginSteps(driver);
+        loginSteps.enterPassword(validPassword);
+        loginSteps.clickLoginButton();
+        loginSteps.verifyEnterUsername(missingUsername);
     }
 }

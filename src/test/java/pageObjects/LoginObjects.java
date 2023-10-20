@@ -23,6 +23,12 @@ public class LoginObjects extends MenuObjects{
     @FindBy(id = "login")
     WebElement loginButton;
 
+    @FindBy(id = "password_span")
+    WebElement missingPasswordTxt;
+
+    @FindBy(id = "username_span")
+    WebElement missingUsernameTxt;
+
     public WebElement getUsernameField() {
         return usernameField;
     }
@@ -33,6 +39,14 @@ public class LoginObjects extends MenuObjects{
 
     public WebElement getLoginButton() {
         return loginButton;
+    }
+
+    public WebElement getMissingUsernameTxt() {
+        return missingUsernameTxt;
+    }
+
+    public WebElement getMissingPasswordTxt() {
+        return missingUsernameTxt;
     }
 
 
