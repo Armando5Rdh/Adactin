@@ -10,4 +10,5 @@ import java.io.IOException;
 public class SearchHotelTest extends BaseTest {
 
 
+
 }

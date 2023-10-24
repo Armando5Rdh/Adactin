@@ -3,6 +3,9 @@ package steps;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 import pageObjects.Menu;
@@ -10,6 +13,7 @@ import pageObjects.Menu;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 
 public class CommonSteps {
@@ -50,6 +54,11 @@ public class CommonSteps {
         }
 
         a.assertAll();
+    }
+
+    public void waitForElement(WebElement element, long time) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.visibilityOf(element));
     }
 
 

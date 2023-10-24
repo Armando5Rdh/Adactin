@@ -49,7 +49,7 @@ public class Login extends Menu {
     }
 
     public WebElement getMissingPasswordTxt() {
-        return missingUsernameTxt;
+        return missingPasswordTxt;
     }
 
     public WebElement getInvalidCredentialsTxt() {

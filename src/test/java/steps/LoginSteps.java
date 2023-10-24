@@ -6,25 +6,28 @@ import pageObjects.Login;
 
 public class LoginSteps extends CommonSteps {
 
+    String validUsername = "ArmandoRdh";
+    String validPassword = "Test123!";
+
     WebDriver driver;
-    Login login;
+    Login loginObject;
     public LoginSteps(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        login = new Login(driver);
+        loginObject = new Login(driver);
         PageFactory.initElements(driver,this);
     }
 
     public void enterUsername(String username) {
-        login.getUsernameField().sendKeys(username);
+        loginObject.getUsernameField().sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        login.getPasswordField().sendKeys(password);
+        loginObject.getPasswordField().sendKeys(password);
     }
 
     public void clickLoginButton() {
-        login.getLoginButton().click();
+        loginObject.getLoginButton().click();
     }
 
     public void login(String username, String password) {
@@ -33,16 +36,22 @@ public class LoginSteps extends CommonSteps {
         clickLoginButton();
     }
 
+    public void login() {
+        enterUsername(validUsername);
+        enterPassword(validPassword);
+        clickLoginButton();
+    }
+
     public void verifyEnterPasswordTxt(String message) {
-        compareText(login.getMissingPasswordTxt().getText(),message);
+        compareText(loginObject.getMissingPasswordTxt().getText(),message);
     }
 
     public void verifyEnterUsername(String message) {
-        compareText(login.getMissingUsernameTxt().getText(),message);
+        compareText(loginObject.getMissingUsernameTxt().getText(),message);
     }
 
     public void verifyWrongCredentials(String message) {
-        compareText(login.getInvalidCredentialsTxt().getText(),message);
+        compareText(loginObject.getInvalidCredentialsTxt().getText(),message);
     }
 
 }

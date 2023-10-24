@@ -24,14 +24,11 @@ public class LoginTest extends BaseTest {
 
     String wrongCredentialsMessage = "Invalid Login details or Your Password might have expired. " +
             "Click here to reset your password";
-    LoginSteps loginSteps;
 
     @Test
     public void testLoginValidAccount() throws InterruptedException {
-        loginSteps = new LoginSteps(driver);
         String message = "Hello " + validUsername + "!";
         loginSteps.login(validUsername, validPassword);
-        Thread.sleep(1500);
         loginSteps.verifyWelcomeMessage(message);
     }
 
@@ -53,7 +50,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testLoginInvalid() {
-        loginSteps = new LoginSteps(driver);
+//        loginSteps = new LoginSteps(driver);
         loginSteps.enterUsername(invalidUsername);
         loginSteps.enterPassword(invalidPassword);
         loginSteps.clickLoginButton();
