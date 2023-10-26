@@ -56,12 +56,13 @@ public class CommonSteps {
         a.assertAll();
     }
 
-    public void waitForElement(WebElement element, long time) {
+    public void waitForElementToAppear(WebElement element, long time) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-
-
-
+    public void waitForElementToDisappear(WebElement element, long time) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
 }

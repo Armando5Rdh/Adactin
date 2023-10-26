@@ -43,9 +43,7 @@ public class SearchHotel extends Menu {
 
     @FindBy(id = "Reset")
     WebElement resetButton;
-
-
-
+    
     public WebElement getLocationDropdown() {
         return locationDropdown;
     }
