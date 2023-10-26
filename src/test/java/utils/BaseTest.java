@@ -15,7 +15,7 @@ public class BaseTest {
 
     public LoginSteps loginSteps;
     @BeforeMethod
-    public void initializeDriver() {
+    public void beforeTest() {
         driver = new ChromeDriver();
         loginSteps = new LoginSteps(driver);
         driver.get("https://adactinhotelapp.com/HotelAppBuild2/index.php");

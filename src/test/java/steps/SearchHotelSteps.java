@@ -7,6 +7,10 @@ import org.openqa.selenium.support.ui.Select;
 import pageObjects.Login;
 import pageObjects.SearchHotel;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+
 public class SearchHotelSteps extends CommonSteps {
 
     WebDriver driver;
@@ -17,6 +21,12 @@ public class SearchHotelSteps extends CommonSteps {
         this.driver = driver;
         searchHotel = new SearchHotel(driver);
         PageFactory.initElements(driver,this);
+    }
+
+    public String getSpecificDate(long futureDays) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now().plusDays(futureDays);
+        return (dtf.format(now));
     }
 
     public void SelectLocation(String value) {
@@ -40,12 +50,12 @@ public class SearchHotelSteps extends CommonSteps {
     }
 
     public void SelectCheckIn(String value) {
-        searchHotel.getCheckInInput().sendKeys("");
+        searchHotel.getCheckInInput().clear();
         searchHotel.getCheckInInput().sendKeys(value);
     }
 
-    public void SelectCheckInOut(String value) {
-        searchHotel.getCheckOutInput().sendKeys("");
+    public void SelectCheckOut(String value) {
+        searchHotel.getCheckOutInput().clear();
         searchHotel.getCheckOutInput().sendKeys(value);
     }
 
@@ -59,11 +69,11 @@ public class SearchHotelSteps extends CommonSteps {
         childNumber.selectByValue(value);
     }
 
-    public void clickSearch() {
+    public void ClickSearch() {
         searchHotel.getSubmitButton().click();
     }
 
-    public void clickReset() {
+    public void ClickReset() {
         searchHotel.getResetButton().click();
     }
 

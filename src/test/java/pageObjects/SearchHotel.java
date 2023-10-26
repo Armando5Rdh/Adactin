@@ -29,7 +29,7 @@ public class SearchHotel extends Menu {
     @FindBy(id = "datepick_in")
     WebElement checkInInput;
 
-    @FindBy(className = "datepick_out")
+    @FindBy(id = "datepick_out")
     WebElement checkOutInput;
 
     @FindBy(id = "adult_room")
@@ -43,7 +43,7 @@ public class SearchHotel extends Menu {
 
     @FindBy(id = "Reset")
     WebElement resetButton;
-    
+
     public WebElement getLocationDropdown() {
         return locationDropdown;
     }
