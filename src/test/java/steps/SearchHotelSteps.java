@@ -16,10 +16,38 @@ public class SearchHotelSteps extends CommonSteps {
     WebDriver driver;
     SearchHotel searchHotel;
 
+    LoginSteps loginSteps;
+
+    String location = "New York";
+    String hotel = "Hotel Sunshine";
+    String roomType = "Double";
+    String roomNumber = "2";
+    String checkInDate;
+    String checkOutDate;
+    String adultsNumber = "2";
+    String childNumber = "3";
+
+    String firstName = "TEst";
+
+    String lastName = "Name";
+
+    String address = "My location";
+
+    String cardNumber = "1234567890987654";
+
+    String cardType = "VISA";
+
+    String cardExpirationMonth = "3";
+
+    String cardExpirationYear = "2029";
+
+    String cardCvv = "123";
+
     public SearchHotelSteps(WebDriver driver) {
         super(driver);
         this.driver = driver;
         searchHotel = new SearchHotel(driver);
+        loginSteps = new LoginSteps(driver);
         PageFactory.initElements(driver,this);
     }
 
@@ -76,5 +104,92 @@ public class SearchHotelSteps extends CommonSteps {
     public void ClickReset() {
         searchHotel.getResetButton().click();
     }
+
+    public void SelectFirstHotel() {
+        searchHotel.getFirstOption().click();
+    }
+
+    public void ClickContinueBtn() {
+        searchHotel.getContinueBtn().click();
+    }
+
+    public void EnterFirstName(String name) {
+        searchHotel.getFirstNameInput().sendKeys(name);
+    }
+
+    public void EnterLastName(String lastName) {
+        searchHotel.getLastNameInput().sendKeys(lastName);
+    }
+
+    public void EnterAddress(String address) {
+        searchHotel.getAddressInput().sendKeys(address);
+    }
+
+    public void EnterCardNumber(String cardNumber) {
+        searchHotel.getCardNumberInput().sendKeys(cardNumber);
+    }
+
+    public void SelectCardType(String cardType) {
+        Select type= new Select(searchHotel.getCardTypeDropdown());
+        type.selectByValue(cardType);
+    }
+
+    public void SelectCardExpirationMonth(String expirationMonth) {
+        Select type= new Select(searchHotel.getCardExpireMonthDropdown());
+        type.selectByValue(expirationMonth);
+    }
+
+    public void SelectCardExpirationYear(String expirationYear) {
+        Select type= new Select(searchHotel.getCardExpireYearDropdown());
+        type.selectByValue(expirationYear);
+    }
+
+    public void EnterCvv(String cvv) {
+        searchHotel.getCardCvvInput().sendKeys(cvv);
+    }
+
+    public void ClickBookNow() {
+        searchHotel.getBookNowBtn().click();
+    }
+
+    public void ClickCancel() {
+        searchHotel.getCancelBtn().click();
+    }
+
+    public void SetDate(int checkIn, int checkOut) {
+        checkInDate = getSpecificDate(checkIn);
+        checkOutDate = getSpecificDate(checkOut);
+    }
+
+    public void VerifyOrderNoIsDisplayed() {
+        WaitForElementToAppear(searchHotel.getOrderNoTxt(), 10000);
+        VerifyIfElementIsDisplayed(searchHotel.getOrderNoTxt());
+        System.out.println(searchHotel.getOrderNoTxt().getAttribute("value"));
+    }
+    public void SearchValidHotel() {
+        loginSteps.login();
+        SelectLocation(location);
+        SelectHotel(hotel);
+        SelectRoomType(roomType);
+        SelectRoomNumber(roomNumber);
+        SelectCheckIn(checkInDate);
+        SelectCheckOut(checkOutDate);
+        SelectAdultsNumber(adultsNumber);
+        SelectChildNumber(childNumber);
+        ClickSearch();
+    }
+
+    public void FillPersonalData() {
+        EnterFirstName(firstName);
+        EnterLastName(lastName);
+        EnterAddress(address);
+        EnterCardNumber(cardNumber);
+        SelectCardType(cardType);
+        SelectCardExpirationMonth(cardExpirationMonth);
+        SelectCardExpirationYear(cardExpirationYear);
+        EnterCvv(cardCvv);
+
+    }
+
 
 }

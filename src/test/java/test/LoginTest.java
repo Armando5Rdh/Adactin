@@ -1,9 +1,5 @@
 package test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import steps.LoginSteps;
 import utils.BaseTest;
@@ -12,8 +8,8 @@ import java.io.IOException;
 
 public class LoginTest extends BaseTest {
 
-    String validUsername = "ArmandoRdh";
-    String validPassword = "Test123!";
+//    String validUsername = "ArmandoRdh";
+//    String validPassword = "Test123!";
 
     String invalidUsername = "user";
     String invalidPassword = "password";
@@ -29,7 +25,7 @@ public class LoginTest extends BaseTest {
     public void testLoginValidAccount() throws InterruptedException {
         String message = "Hello " + validUsername + "!";
         loginSteps.login(validUsername, validPassword);
-        loginSteps.verifyWelcomeMessage(message);
+        loginSteps.VerifyWelcomeMessage(message);
     }
 
     @Test
@@ -60,6 +56,6 @@ public class LoginTest extends BaseTest {
     @Test
     public void verifyLoginLinks() throws IOException {
         loginSteps = new LoginSteps(driver);
-        loginSteps.verifyLinksAreWorking();
+        loginSteps.VerifyLinksAreWorking();
     }
 }

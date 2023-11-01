@@ -43,15 +43,15 @@ public class LoginSteps extends CommonSteps {
     }
 
     public void verifyEnterPasswordTxt(String message) {
-        compareText(loginObject.getMissingPasswordTxt().getText(),message);
+        CompareText(loginObject.getMissingPasswordTxt().getText(),message);
     }
 
     public void verifyEnterUsername(String message) {
-        compareText(loginObject.getMissingUsernameTxt().getText(),message);
+        CompareText(loginObject.getMissingUsernameTxt().getText(),message);
     }
 
     public void verifyWrongCredentials(String message) {
-        compareText(loginObject.getInvalidCredentialsTxt().getText(),message);
+        CompareText(loginObject.getInvalidCredentialsTxt().getText(),message);
     }
 
 }

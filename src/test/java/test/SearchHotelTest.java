@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import steps.SearchHotelSteps;
 import utils.BaseTest;
 
+import java.io.IOException;
+
 public class SearchHotelTest extends BaseTest {
 
     SearchHotelSteps searchHotelSteps;
@@ -20,7 +22,7 @@ public class SearchHotelTest extends BaseTest {
 
 
     @BeforeMethod
-    public void beforeTest() {
+    public void beforeTest()  {
         super.beforeTest();
         searchHotelSteps = new SearchHotelSteps(driver);
         checkInDate = searchHotelSteps.getSpecificDate(0);
@@ -41,6 +43,17 @@ public class SearchHotelTest extends BaseTest {
         searchHotelSteps.SelectAdultsNumber(adultsNumber);
         searchHotelSteps.SelectChildNumber(childNumber);
         searchHotelSteps.ClickSearch();
+    }
+
+    @Test
+    public void searchForHotel() {
+        searchHotelSteps.SetDate(0,7);
+        searchHotelSteps.SearchValidHotel();
+        searchHotelSteps.SelectFirstHotel();
+        searchHotelSteps.ClickContinueBtn();
+        searchHotelSteps.FillPersonalData();
+        searchHotelSteps.ClickBookNow();
+        searchHotelSteps.VerifyOrderNoIsDisplayed();
     }
 
 }
