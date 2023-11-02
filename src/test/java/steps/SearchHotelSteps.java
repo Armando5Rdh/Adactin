@@ -22,8 +22,8 @@ public class SearchHotelSteps extends CommonSteps {
     String hotel = "Hotel Sunshine";
     String roomType = "Double";
     String roomNumber = "2";
-    String checkInDate;
-    String checkOutDate;
+    String checkInDate = getSpecificDate(0);
+    String checkOutDate = getSpecificDate(7);
     String adultsNumber = "2";
     String childNumber = "3";
 
@@ -156,9 +156,8 @@ public class SearchHotelSteps extends CommonSteps {
         searchHotel.getCancelBtn().click();
     }
 
-    public void SetDate(int checkIn, int checkOut) {
-        checkInDate = getSpecificDate(checkIn);
-        checkOutDate = getSpecificDate(checkOut);
+    public String SetDate(int date) {
+        return getSpecificDate(date);
     }
 
     public void VerifyOrderNoIsDisplayed() {
@@ -179,7 +178,37 @@ public class SearchHotelSteps extends CommonSteps {
         ClickSearch();
     }
 
+    public void SearchValidHotel(String location, String hotel, String roomType, String roomNumber, String checkInDate,
+                                 String checkOutDate, String adultsNumber,String childNumber) {
+        loginSteps.login();
+        String checkIn = getSpecificDate(Integer.parseInt(checkInDate));
+        String checkOut = getSpecificDate(Integer.parseInt(checkOutDate));
+
+        SelectLocation(location);
+        SelectHotel(hotel);
+        SelectRoomType(roomType);
+        SelectRoomNumber(roomNumber);
+        SelectCheckIn(checkIn);
+        SelectCheckOut(checkOut);
+        SelectAdultsNumber(adultsNumber);
+        SelectChildNumber(childNumber);
+        ClickSearch();
+    }
+
     public void FillPersonalData() {
+        EnterFirstName(firstName);
+        EnterLastName(lastName);
+        EnterAddress(address);
+        EnterCardNumber(cardNumber);
+        SelectCardType(cardType);
+        SelectCardExpirationMonth(cardExpirationMonth);
+        SelectCardExpirationYear(cardExpirationYear);
+        EnterCvv(cardCvv);
+
+    }
+
+    public void FillPersonalData(String firstName, String lastName, String address, String cardNumber, String cardType,
+                                 String cardExpirationMonth, String cardExpirationYear, String cardCvv) {
         EnterFirstName(firstName);
         EnterLastName(lastName);
         EnterAddress(address);
