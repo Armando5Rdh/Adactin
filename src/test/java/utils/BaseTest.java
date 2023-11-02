@@ -1,5 +1,7 @@
 package utils;
 
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,10 +10,10 @@ import org.testng.annotations.BeforeMethod;
 import pageObjects.Login;
 import steps.LoginSteps;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
 public class BaseTest  {
@@ -54,8 +56,19 @@ public class BaseTest  {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
+    public List<HashMap<String, String>> getJsonDataToMap() throws IOException, ParseException {
+        File file = new File("src/test/java//Data/ClientInfo.json");
+//        Map<String, Object> employee = objectMapper.readValue(file, new TypeReference<>(){});
+
+        Object o = new JSONParser().parse(new FileReader(file));
+
+        List<HashMap<String, String>> data = (List<HashMap<String, String>>) o;
+
+        return data;
+    }
+
     @AfterMethod
     public void afterTest() {
-        //driver.quit();
+        driver.quit();
     }
 }

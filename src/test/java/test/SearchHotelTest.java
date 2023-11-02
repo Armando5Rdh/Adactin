@@ -1,12 +1,15 @@
 package test;
 
+import org.json.simple.parser.ParseException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.SearchHotelSteps;
 import utils.BaseTest;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 public class SearchHotelTest extends BaseTest {
 
@@ -33,28 +36,16 @@ public class SearchHotelTest extends BaseTest {
     }
 
     @DataProvider(name = "userData")
-    public Object[][] TestData() {
+    public Object[][] TestData() throws IOException, ParseException {
 
-        HashMap<String, String> firstSearch = new HashMap<>();
-        firstSearch.put("location","New York");
-        firstSearch.put("hotel","Hotel Sunshine");
-        firstSearch.put("roomType","Double");
-        firstSearch.put("roomNumber","2");
-        firstSearch.put("checkInDate","0");
-        firstSearch.put("checkOutDate","4");
-        firstSearch.put("adultsNumber","2");
-        firstSearch.put("childNumber","3");
-        firstSearch.put("firstName","TEst");
-        firstSearch.put("lastName","Name");
-        firstSearch.put("address","My location");
-        firstSearch.put("cardNumber","1234567890987654");
-        firstSearch.put("cardType","VISA");
-        firstSearch.put("cardExpirationMonth","3");
-        firstSearch.put("cardExpirationYear","2029");
-        firstSearch.put("cardCvv","123");
+        List<HashMap<String, String>> data = getJsonDataToMap();
+        Object[][] testData = new Object[data.size()][];
 
-        Object[][] data = { {firstSearch}};
-        return data;
+        for (int i = 0; i < data.size(); i++) {
+            testData[i] = new Object[]{data.get(i)};
+        }
+
+        return testData;
     }
 
 }

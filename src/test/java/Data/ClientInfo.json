@@ -1,0 +1,40 @@
+[
+  {
+    "location" :"New York",
+    "hotel" : "Hotel Sunshine",
+    "roomType" : "Double",
+    "roomNumber" : "2",
+    "checkInDate" : "0",
+    "checkOutDate" : "3",
+    "adultsNumber" : "2",
+    "childNumber" : "3",
+    "firstName" : " my First Name",
+    "lastName" :"No last Name",
+    "address" : "My location",
+    "cardNumber" : "1234567890987654",
+    "cardType" : "VISA",
+    "cardExpirationMonth" : "3",
+    "cardExpirationYear" : "2029",
+    "cardCvv" : "123"
+  },
+
+  {
+    "location" :"London",
+    "hotel" : "Hotel Hervey",
+    "roomType" : "Deluxe",
+    "roomNumber" : "5",
+    "checkInDate" : "5",
+    "checkOutDate" : "12",
+    "adultsNumber" : "3",
+    "childNumber" : "4",
+    "firstName" : " Second test Name",
+    "lastName" :"Smith",
+    "address" : "537 Vesta Drive Park Ridge, 60068",
+    "cardNumber" : "4479663048571598",
+    "cardType" : "MAST",
+    "cardExpirationMonth" : "10",
+    "cardExpirationYear" : "2027",
+    "cardCvv" : "321"
+  }
+
+]
